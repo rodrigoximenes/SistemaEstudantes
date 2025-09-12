@@ -4,16 +4,22 @@ namespace SistemaAcademico.Repositorio
 {
     public class AlunoRepositorio : IAlunoRepositorio
     {
-        private static List<Aluno> _alunos = new();
+        private readonly EstudanteDbContext _context;
+
+        public AlunoRepositorio(EstudanteDbContext contexto)
+        {
+            _context = contexto;
+        }
 
         public void Adicionar(Aluno aluno)
         {
-            _alunos.Add(aluno);
+            _context.Alunos.Add(aluno);
+            _context.SaveChanges();
         }
 
         public List<Aluno> Listar()
         {
-            return _alunos;
+            return _context.Alunos.ToList();
         }
     }
 }
