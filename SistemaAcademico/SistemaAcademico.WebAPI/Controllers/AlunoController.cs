@@ -19,7 +19,7 @@ namespace SistemaAcademico.WebAPI.Controllers
         public IActionResult Post(Aluno aluno)
         {
             _servico.Adicionar(aluno);
-            return Ok("Aluno cadastrado com sucesso!");
+            return Ok(new { mensagem = "Aluno cadastrado com sucesso!" });
         }
 
         [HttpGet]
